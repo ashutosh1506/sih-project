@@ -1,0 +1,23 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "SIH FullStack Project",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderyuvan/sih-project.git#main"
+  },
+  "keywords": [
+    "SIH"
+  ],
+  "author": "Yuvan Grover",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coderyuvan/sih-project/issues"
+  },
+  "homepage": "https://github.com/coderyuvan/sih-project/tree/main#readme"
+}
