@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "regex": "^4.3.1"
+  }
+}
