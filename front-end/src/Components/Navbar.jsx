@@ -58,7 +58,7 @@ const Navbar = () => {
       <img
       src="/image 4.png" // path to logo
       alt="Logo"
-      className="absolute w-[164px] h-[73px] mt-[6px] ml-[10px] "
+      className="absolute w-[164px] h-[73px] mt-[6px] ml-[10px] p-2 "
     />
       </div>
     
