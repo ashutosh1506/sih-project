@@ -40,18 +40,8 @@ const UserSchema= new mongoose.Schema(
             type:String,
     
         },
-        phoneNumber:{
-            type:Number,
-            required:true,
-            unique:true,
-
-        },
-        otp:{
-            type:Number,
-            required:true,
-            unique:true,
-
-        },
+         
+         
     },
     {
         timestamps: true
