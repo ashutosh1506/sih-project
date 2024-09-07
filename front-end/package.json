@@ -9,14 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "flowbite-react": "^0.10.1",
