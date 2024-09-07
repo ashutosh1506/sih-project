@@ -3,7 +3,7 @@ import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import { User } from "../models/user.model.js";
 
-const generateAccessAndRefreshToken=async(userId)=> {
+const generateAccessAndRefreshToken=async (userId)=> {
     try {
    const user= await User.findById(userId)
   
@@ -28,12 +28,10 @@ const generateAccessAndRefreshToken=async(userId)=> {
         throw new ApiError(400,"Please fill in all fields")
     }
 
-  const user= await User.findOne({
-    $or:[{email},{password}]
-   })
+    const user = await User.findOne({ email });
 
    if(!user) {
-    throw new ApiError(404, "user  Do Not Exsist")
+    throw new ApiError(402, "User Do Not Exsist")
    }
 
  const validPassword=  await user.ispasswordCorrect(password)
@@ -42,6 +40,7 @@ const generateAccessAndRefreshToken=async(userId)=> {
     }
  
  const {Accesstoken,RefeshToken}=generateAccessAndRefreshToken(user._id);
+  console.log(Accesstoken);
 
  const loggedinUser=await User.findById(user._id).select("-refreshToken -password")
 
