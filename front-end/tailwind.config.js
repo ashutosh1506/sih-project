@@ -10,6 +10,12 @@ export default {
     extend: {
       backgroundImage: {
         'custom-bg': "url('/Rectangle 2.png')",  //  image path
+        'custom-bg1' :"url('/image 3.png')",
+        'custom-bg2' :"url('/image 2.png')",
+        'custom-bg3':"url('/logimg.png')",
+      },
+      fontFamily: {
+        kodchasan: ['Kodchasan', 'sans-serif'],
       },
     },
   },
