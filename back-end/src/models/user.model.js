@@ -3,6 +3,11 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
 const UserSchema= new mongoose.Schema(
     {
+        name:{
+            type:String,
+            required:true,
+            unique:true,
+        },
         username:{
             type:String,
             required:true,
@@ -11,24 +16,13 @@ const UserSchema= new mongoose.Schema(
             trim:true,
             index:true,
         },
-    
-        email:{
+        
+         
+
+        Phnnumber:{
             type:String, 
             required:true,
             unique:true,
-            lowercase:true,
-            trim:true,
-        },
-        fullName:{
-            type:String,
-            required:true,
-            trim:true,
-            index:true
-        },
-    
-        avatar:{
-            type:String,// cloudinary url isme video yhe sb files uploqd krkr ek url aata h
-            required:true,
         },
 
         password:{
@@ -60,13 +54,16 @@ UserSchema.methods.ispasswordCorrect= async function(password){
     return await bcrypt.compare(password,this.password)
 }
 
+
+
 UserSchema.methods.generateAcessTokens=function(){
      return jwt.sign(
         {
             _id: this._id,
-            email: this.email,
+            name:this.name,
             username: this.username,
-            fullName: this.fullName
+            Phnnumber:this.Phnnumber
+         
         },
         process.env.ACCESS_TOKEN_SECRET,
         {

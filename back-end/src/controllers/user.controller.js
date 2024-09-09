@@ -2,6 +2,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import { User } from "../models/user.model.js";
+ 
 
 const generateAccessAndRefreshToken=async (userId)=> {
     try {
@@ -22,16 +23,64 @@ const generateAccessAndRefreshToken=async (userId)=> {
     }
   } 
 
+
+const RegisterUser=asyncHandler(async(req,res)=>{
+    
+  const {name,Phnnumber,username,password}=req.body;
+  console.log(req.body)
+
+  if (!name || !Phnnumber || !username || !password )  {
+    throw new ApiError(400,"all fields are required")
+  }
+  
+ 
+  const existingUser=await User.findOne({
+    $or:[{Phnnumber},{username}]
+  })
+
+  if(existingUser) {
+    throw new ApiError(400,"user already exists")
+  }
+
+  const user=await User.create({
+    name,
+    Phnnumber,
+    username:username?.toLowerCase(),
+    password,
+    
+  })
+
+  const createdUser=await User.findById(user._id).select("-password -refreshToken")
+
+  if(!createdUser) {
+     throw new ApiError(500,"something went wrong while registering the user")
+  }
+    
+  return res
+  .status(201)
+  .json(
+    200,
+    createdUser,
+    "user SignedUp successfully"
+  )
+
+})
+
  const Loginuser=asyncHandler(async(req,res)=>{
-    const {email,password}=req.body
-    if([email,password].some((field)=>field?.trim()==="")){
+    const { Phnnumber,username}=req.body
+    if([ Phnnumber,username].some((field)=>field?.trim()==="")){
         throw new ApiError(400,"Please fill in all fields")
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({
+      $or:[
+        {Phnnumber},
+        {username}
+      ]
+    });
 
    if(!user) {
-    throw new ApiError(402, "User Do Not Exsist")
+    throw new ApiError(404, "User Do Not Exsist")
    }
 
  const validPassword=  await user.ispasswordCorrect(password)
@@ -66,6 +115,7 @@ const generateAccessAndRefreshToken=async (userId)=> {
 
 
  export {
+    RegisterUser,
     Loginuser,
  }
 
