@@ -89,30 +89,32 @@ const Navbar = () => {
           >
             <h1>Get Trusted Hospital Vacancies</h1>
 
-            {/* Sub-Heading Section */}
+        {/* Sub-Heading Section */}
+    
+      <h1 className="font-kodchasan text-[32px] mt-[15px] font-normal leading-[41.6px] text-white text-left">
+        Your Health, Our Mission.
+      </h1>
+       
+      {/*Doctor and bed numbers */}
+      <div className="flex w-screen h-screen ">
+      <div className="relative  w-[630px] h-[128px] mt-[90px] ml-[70px]   bg-custom-bg1  bg-center border border-1 border-black">
+            <div className=' w-[212px] h-[58px] ml-[150px] mt-[35px] text-center text-white font-kodchasan text-[24px]  leading-[28.94px] font-[Bruno_Ace_SC] opacity-100'>350+ Beds provided</div>
+       </div>
+       <div className="relative w-[630px] h-[128px] mt-[90px] ml-[40px]  mr-[80px] bg-custom-bg2   bg-center  border border-1 border-black">
+              <div className=". w-[212px] h-[58px] ml-[150px] mt-[35px] text-center text-white font-kodchasan text-[24px]  leading-[28.94px] font-[Bruno_Ace_SC] opacity-100">100+ Doctors suggested</div>
 
-            <h1 className="font-kodchasan text-[32px] mt-[15px] font-normal leading-[41.6px] text-white text-left">
-              Your Health, Our Mission.
-            </h1>
+       </div>
+      </div>
 
-            {/*Doctor and bed numbers */}
-            <div className="flex w-screen h-screen ">
-              <div className="relative  w-[630px] h-[128px] mt-[90px] ml-[70px]   bg-custom-bg1  bg-center border border-1 border-black">
-                <div className=" w-[212px] h-[58px] ml-[150px] mt-[35px] text-center text-white font-kodchasan text-[24px]  leading-[28.94px] font-[Bruno_Ace_SC] opacity-100">
-                  350+ Beds provided
-                </div>
-              </div>
-              <div className="relative w-[630px] h-[128px] mt-[90px] ml-[40px]  mr-[80px] bg-custom-bg2   bg-center  border border-1 border-black">
-                <div className=". w-[212px] h-[58px] ml-[150px] mt-[35px] text-center text-white font-kodchasan text-[24px]  leading-[28.94px] font-[Bruno_Ace_SC] opacity-100">
-                  100+ Doctors suggested
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-      )}
+    </div>
+   
+    
+    </main>
+     )} 
 
-      <section className=" relative ml-[65px] mt-[550px] p-3">
+{!isLoginPage && (
+        <>
+        <section className=" relative ml-[65px] mt-[550px] p-3">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Updates Section */}
           <div className="border p-4 rounded-lg shadow bg-white">
@@ -172,20 +174,22 @@ const Navbar = () => {
 
       {/* Emergency Call Button */}
       <section className=" flex justify-end p-3">
-        <div className="flex">
-          <img
-            src="/material-symbols_call-outline.png"
-            alt="telephone"
-            className="w-[50px] "
-          />
-          <button className="bg-red-500 text-white px-6 py-3 rounded-full text-lg shadow hover:bg-red-600 transition-all">
-            EMERGENCY CALL NOW
-          </button>
-        </div>
-      </section>
-      <div className="flex-grow">
-        <Outlet />
+        <div className='flex'>
+          <img src='/material-symbols_call-outline.png' alt='telephone' className='w-[50px] '/>
+      {/*<button className="bg-red-500 text-white px-6 py-3 rounded-full text-lg shadow hover:bg-red-600 transition-all">
+        EMERGENCY CALL NOW
+      </button>*/}
+       <a href="tel:911" className="flex">
+            <button className="bg-red-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-lg shadow hover:bg-red-600 transition-all">
+              EMERGENCY CALL NOW
+            </button>
+          </a>
       </div>
+       </section>
+   
+       </>
+      )}
+     
     </>
   );
 };
