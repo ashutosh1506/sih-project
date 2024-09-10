@@ -8,9 +8,9 @@ const generateAccessAndRefreshToken=async (userId)=> {
     try {
    const user= await User.findById(userId)
   
-   const Accesstoken= user.generateAcessTokens()
+   const Accesstoken= await user.generateAcessTokens()
   
-   const RefeshToken= user.generateRefreshTokens()
+   const RefeshToken= await user.generateRefreshTokens()
   
    // reffresh token in db daalo
    user.refreshToken=RefeshToken
@@ -45,11 +45,11 @@ const RegisterUser=asyncHandler(async(req,res)=>{
   const user=await User.create({
     name,
     Phnnumber,
-    username:username?.toLowerCase(),
+    username:username.toLowerCase(),
     password,
     
   })
-
+ await user.save()
   const createdUser=await User.findById(user._id).select("-password -refreshToken")
 
   if(!createdUser) {
@@ -67,15 +67,15 @@ const RegisterUser=asyncHandler(async(req,res)=>{
 })
 
  const Loginuser=asyncHandler(async(req,res)=>{
-    const { Phnnumber,username}=req.body
-    if([ Phnnumber,username].some((field)=>field?.trim()==="")){
+    const { Phnnumber,password}=req.body
+    if([ Phnnumber,password].some((field)=>field?.trim()==="")){
         throw new ApiError(400,"Please fill in all fields")
     }
 
     const user = await User.findOne({
       $or:[
         {Phnnumber},
-        {username}
+        {password}
       ]
     });
 
@@ -88,9 +88,12 @@ const RegisterUser=asyncHandler(async(req,res)=>{
     throw new ApiError(401,"Invalid Password")
     }
  
- const {Accesstoken,RefeshToken}=generateAccessAndRefreshToken(user._id);
-  console.log(Accesstoken);
-
+ const {Accesstoken,RefeshToken}= await generateAccessAndRefreshToken(user._id);
+ console.log("acess ",Accesstoken);
+ console.log("refrsh",RefeshToken);
+ 
+ 
+   
  const loggedinUser=await User.findById(user._id).select("-refreshToken -password")
 
  const options={
@@ -107,7 +110,7 @@ const RegisterUser=asyncHandler(async(req,res)=>{
         {
             user:loggedinUser,Accesstoken,RefeshToken
         },
-        "User logged in successfully"
+        "User logged in successfully!!"
     )
  )
 
