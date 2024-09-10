@@ -62,7 +62,8 @@ UserSchema.methods.generateAcessTokens=function(){
             _id: this._id,
             name:this.name,
             username: this.username,
-            Phnnumber:this.Phnnumber
+            Phnnumber:this.Phnnumber,
+            password:this.password,
          
         },
         process.env.ACCESS_TOKEN_SECRET,
