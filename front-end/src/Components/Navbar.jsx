@@ -103,9 +103,10 @@ const Navbar = () => {
    
     
     </main>
-    
-  )}
-   
+     )} 
+
+{!isLoginPage && (
+        <>
         <section className=" relative ml-[65px] mt-[550px] p-3">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Updates Section */}
@@ -158,15 +159,19 @@ const Navbar = () => {
       <section className=" flex justify-end p-3">
         <div className='flex'>
           <img src='/material-symbols_call-outline.png' alt='telephone' className='w-[50px] '/>
-      <button className="bg-red-500 text-white px-6 py-3 rounded-full text-lg shadow hover:bg-red-600 transition-all">
+      {/*<button className="bg-red-500 text-white px-6 py-3 rounded-full text-lg shadow hover:bg-red-600 transition-all">
         EMERGENCY CALL NOW
-      </button>
+      </button>*/}
+       <a href="tel:911" className="flex">
+            <button className="bg-red-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-lg shadow hover:bg-red-600 transition-all">
+              EMERGENCY CALL NOW
+            </button>
+          </a>
       </div>
        </section>
-       <div className="flex-grow">
-        <Outlet />
-      </div>
-     
+   
+       </>
+      )}
      
     </>
 

@@ -14,6 +14,7 @@ import Area from './Components/Area'
 import Signin from './Components/Signin.jsx'
 
 const route=createBrowserRouter(createRoutesFromElements(
+  <>
   <Route path='/'  element={<Navbar/>}>
     <Route index  element={<Home />} />
     <Route path='/login' element={<Login />} />
@@ -21,8 +22,11 @@ const route=createBrowserRouter(createRoutesFromElements(
     <Route path='/area' element={<Area />} />
     <Route path='/hospital' element={<Hospitals />} />
     <Route path='/oxygen' element={<Oxygen />} />
-    <Route path='/bloodbank' element={<BloodBank />} />
+    
     </Route>
+    <Route path='/bloodbank' element={<BloodBank />} />
+    </>
+     
 ))
 
 ReactDOM.createRoot(document.getElementById('root')).render(
