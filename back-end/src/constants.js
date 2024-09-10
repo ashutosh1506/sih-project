@@ -1,1 +1,1 @@
-export  const DB_NAME ="HospitalManagement System"
+export  const DB_NAME ="SIH_2024";
