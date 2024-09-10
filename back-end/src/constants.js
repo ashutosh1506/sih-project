@@ -1,1 +1,1 @@
-export  const DB_NAME ="SIH_2024"
+export  const DB_NAME ="SIH_2024";
