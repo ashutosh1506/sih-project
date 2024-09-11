@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { Link, Form, redirect } from "react-router-dom";
-import { customFetch } from "../utils/customFetch";
-
+import { Link, Form, redirect, useNavigation } from "react-router-dom";
+import customFetch from "../utils/customFetch";
 // Server-side action function for login handling
 export const action =
   (queryClient) =>
@@ -23,6 +22,8 @@ export const action =
   };
 
 const Login = () => {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -159,8 +160,9 @@ const Login = () => {
                 <button
                   type="submit"
                   className="w-1/2 ml-20 bg-cyan-400 text-white py-2 rounded-xl font-extrabold"
+                  disabled={isSubmitting}
                 >
-                  LOGIN
+                  {isSubmitting ? "submitting" : "submit"}
                 </button>
 
                 <p className="text-center mt-4">OR</p>
