@@ -16,6 +16,7 @@ import Oxygen from "./Components/Oxygen";
 import Hospitals from "./Components/Hospitals";
 import Area from "./Components/Area";
 import Signin from "./Components/Signin";
+import Chatbot from "./Components/Chatbot.jsx";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 //language
@@ -43,6 +44,7 @@ const route = createBrowserRouter(
       <Route path="/hospital" element={<Hospitals />} />
       <Route path="/oxygen" element={<Oxygen />} />
       <Route path="/bloodbank" element={<BloodBank />} />
+      <Route path="/chatbot" element={<Chatbot/>} />
     </>
   )
 );
