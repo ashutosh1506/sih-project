@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const [formData, setFormData] = useState({
@@ -7,15 +10,46 @@ const Signin = () => {
     phone: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState(""); // Added state for error message
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    const { name, username, phone, password } = formData;
+
+    if (name === "" || username === "" || phone === "" || password === "") {
+      setErrorMessage("Please fill out all fields.");
+      return false;
+    }
+
+    // Basic password validation pattern
+    const passwordPattern =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+    if (!passwordPattern.test(password)) {
+      setErrorMessage(
+        "Password must contain at least one letter, one number, and one special character."
+      );
+      return false;
+    }
+
+    setErrorMessage("");
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your sign-in logic here
-    console.log("User Signed In:", formData);
+    if (!validateForm()) return;
+
+    try {
+      await axios.post("http://localhost:4000/api/v1/users/signup", formData);
+      toast.success("Signup Successful");
+      navigate("/login"); // Redirect to login page after successful signup
+    } catch (error) {
+      toast.error("An error occurred during signup.");
+    }
   };
 
   return (
@@ -23,7 +57,6 @@ const Signin = () => {
       {/* Container for the sign-up page */}
       <div className="bg-white shadow-lg rounded-lg flex w-full max-w-4xl">
         {/* Left section with message */}
-
         <div className="w-1/2 bg-cover bg-center p-8 items-center flex justify-center bg-custom-bg3">
           <div
             className="bg-white w-60 rounded-3xl h-72 shadow-lg text-center"
@@ -126,6 +159,10 @@ const Signin = () => {
                   character.
                 </p>
               </div>
+
+              {errorMessage && (
+                <p className="text-red-600 text-center mb-4">{errorMessage}</p>
+              )}
 
               <button
                 type="submit"

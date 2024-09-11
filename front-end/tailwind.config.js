@@ -16,6 +16,7 @@ export default {
         'custom-bg3':"url('/logimg.png')",
         'custom-blood':"url('/bloodbank.png')",
         'custom-hospital': "url('/hospital.png')",
+        'custom-oxygen' : "url('/oxygenbg.png')"
       },
       fontFamily: {
         kodchasan: ['Kodchasan', 'sans-serif'],
