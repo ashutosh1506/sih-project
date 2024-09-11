@@ -161,7 +161,6 @@ const Login = () => {
                   type="submit"
                   className="w-1/2 ml-20 bg-cyan-400 text-white py-2 rounded-xl font-extrabold"
                   disabled={isSubmitting}
-                  onClick={alert("Login Successful")}
                 >
                   {isSubmitting ? "submitting" : "submit"}
                 </button>
