@@ -1,11 +1,18 @@
 {
-    "home": "Home",
-    "login": "Login",
-    "area": "AREA",
-    "hospitals": "HOSPITALS",
-    "oxygen": "OXYGEN",
-    "bloodbank": "BLOOD BANK",
-    "language": "LANGUAGE",
-    "emergencyCall": "EMERGENCY CALL NOW"
-  }
-  
+  "home": "Home",
+  "login": "Login",
+  "area": "AREA",
+  "hospitals": "HOSPITALS",
+  "oxygen": "OXYGEN",
+  "bloodbank": "Blood Bank",
+  "language": "Language",
+  "trusted_hospitals": "Get Trusted Hospital Vacancies",
+  "health_mission": "Your Health, Our Mission.",
+  "beds_provided": "350+ Beds provided",
+  "doctors_suggested": "100+ Doctors suggested",
+  "updates": "UPDATES",
+  "vacancies_in_run": "VACANCIES IN RUN",
+  "news_highlights": "NEWS & HIGHLIGHTS",
+  "connect_us": "CONNECT WITH US",
+  "emergency_call": "EMERGENCY CALL NOW"
+}

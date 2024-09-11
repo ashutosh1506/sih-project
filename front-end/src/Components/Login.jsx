@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+//auth
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [Phnnumber, setPhnnumber] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  //authentication check
+  const {login}=useAuth();
 
   // Basic validation logic
   const validateForm = () => {
@@ -38,6 +43,7 @@ const Login = () => {
         password,
       });
       toast.success("Login Successful");
+      login();  // Mark the user as authenticated
       navigate("/"); // Redirect to dashboard or another page
     } catch (error) {
       if (error.response) {

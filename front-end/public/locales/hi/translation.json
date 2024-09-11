@@ -1,11 +1,19 @@
 {
-    "home": "होम",
-    "login": "लॉगिन",
-    "area": "क्षेत्र",
-    "hospitals": "अस्पताल",
-    "oxygen": "ऑक्सीजन",
-    "bloodbank": "ब्लड बैंक",
-    "language": "भाषा",
-    "emergencyCall": "आपातकालीन कॉल अब"
+   "home": "होम",
+  "login": "लॉगिन",
+  "area": "क्षेत्र",
+  "hospitals": "अस्पताल",
+  "oxygen": "ऑक्सीजन",
+  "bloodbank": "ब्लड बैंक",
+  "language": "भाषा",
+  "trusted_hospitals": "विश्वसनीय अस्पताल रिक्तियां प्राप्त करें",
+  "health_mission": "आपका स्वास्थ्य, हमारा मिशन।",
+  "beds_provided": "350+ बिस्तर उपलब्ध",
+  "doctors_suggested": "100+ डॉक्टर सुझाए गए",
+  "updates": "अपडेट्स",
+  "vacancies_in_run": "रन में रिक्तियां",
+  "news_highlights": "समाचार और मुख्य विशेषताएं",
+  "connect_us": "हमसे जुड़ें",
+  "emergency_call": "आपातकालीन कॉल अब करें"
   }
   
