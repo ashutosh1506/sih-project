@@ -95,7 +95,6 @@ const Navbar = () => {
             />
           </div>
           {/* Heading Section */}
-
           <div
             className="absolute  mt-[110px] ml-[50px] w-[966px] h-[262px] font-[400] text-[60px] leading-[64.42px]  text-black text-left"
             style={{ fontFamily: "Bruno Ace SC" }}
@@ -107,6 +106,9 @@ const Navbar = () => {
       <h1 className="font-kodchasan text-[32px] mt-[15px] font-normal leading-[41.6px] text-white text-left">
         Your Health, Our Mission.
       </h1>
+        {/*emergency button */}
+    
+
        
       {/*Doctor and bed numbers */}
       <div className="flex w-screen h-screen ">
@@ -119,7 +121,7 @@ const Navbar = () => {
        </div>
       </div>
 
-    </div>
+   </div>
    
     
     </main>
@@ -193,7 +195,7 @@ const Navbar = () => {
         EMERGENCY CALL NOW
       </button>*/}
        <a href="tel:911" className="flex">
-            <button className="bg-red-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-lg shadow hover:bg-red-600 transition-all">
+            <button className="bg-red-500  text-white px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-lg shadow hover:bg-red-600 transition-all">
               EMERGENCY CALL NOW
             </button>
           </a>
