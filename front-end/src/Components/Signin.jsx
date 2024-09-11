@@ -7,10 +7,10 @@ const Signin = () => {
   const [formData, setFormData] = useState({
     name: "",
     username: "",
-    phone: "",
+    Phnnumber: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState(""); // Added state for error message
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,16 +18,14 @@ const Signin = () => {
   };
 
   const validateForm = () => {
-    const { name, username, phone, password } = formData;
+    const { name, username, Phnnumber, password } = formData;
 
-    if (name === "" || username === "" || phone === "" || password === "") {
+    if (name === "" || username === "" || Phnnumber === "" || password === "") {
       setErrorMessage("Please fill out all fields.");
       return false;
     }
 
-    // Basic password validation pattern
-    const passwordPattern =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
     if (!passwordPattern.test(password)) {
       setErrorMessage(
         "Password must contain at least one letter, one number, and one special character."
@@ -48,7 +46,21 @@ const Signin = () => {
       toast.success("Signup Successful");
       navigate("/login"); // Redirect to login page after successful signup
     } catch (error) {
-      toast.error("An error occurred during signup.");
+      if (error.response) {
+        console.error("Error response data:", error.response.data);
+        console.error("Error response status:", error.response.status);
+        console.error("Error response headers:", error.response.headers);
+        toast.error(
+          `Signup failed: ${error.response.data.message ||
+            "An error occurred."}`
+        );
+      } else if (error.request) {
+        console.error("Error request data:", error.request);
+        toast.error("No response from server.");
+      } else {
+        console.error("Error message:", error.message);
+        toast.error("An unexpected error occurred.");
+      }
     }
   };
 
@@ -118,15 +130,15 @@ const Signin = () => {
               <div>
                 <label
                   className="block text-sm font-semibold text-gray-700 mb-1"
-                  htmlFor="phone"
+                  htmlFor="Phnnumber"
                 >
                   Enter Phone No.
                 </label>
                 <input
                   type="tel"
                   id="phone"
-                  name="phone"
-                  value={formData.phone}
+                  name="Phnnumber"
+                  value={formData.Phnnumber}
                   onChange={handleChange}
                   className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                   placeholder="+91-XXXXXXXXXX"
