@@ -6,9 +6,10 @@ import bodyParser from "body-parser";
 import userRouter from "./routes/userRoute.js";
 const app = express();
 
+app.use(bodyParser.json());
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );

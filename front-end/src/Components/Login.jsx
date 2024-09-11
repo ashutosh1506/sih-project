@@ -11,12 +11,12 @@ export const action =
     try {
       await customFetch.post("/users/login", data);
       queryClient.invalidateQueries();
+      console.log(toast.success());
+
       toast.success("Login Successful");
       return redirect("/");
     } catch (error) {
-      toast.error(
-        error?.response?.data?.msg || "An error occurred during login."
-      );
+      toast.error("An error occurred during login.");
       return error;
     }
   };
