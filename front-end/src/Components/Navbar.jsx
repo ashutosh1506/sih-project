@@ -156,20 +156,20 @@ const Navbar = () => {
 
       {!isLoginPage && (
         <>
-        <section className=" flex relative ml-[65px] mt-[550px] p-3">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {/* Updates Section */}
-          <div className="border p-4 rounded-lg shadow bg-white">
-            <div className="text-lg font-bold flex items-center mb-2">
-              <img src="/Info.jpg" alt="1" className="mr-3" />
-              <span>UPDATES</span>
-            </div>
+          <section className=" flex relative ml-[65px] mt-[550px] p-3">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {/* Updates Section */}
+              <div className="border p-4 rounded-lg shadow bg-white">
+                <div className="text-lg font-bold flex items-center mb-2">
+                  <img src="/Info.jpg" alt="1" className="mr-3" />
+                  <span>UPDATES</span>
+                </div>
 
-            <p className="text-gray-600 ">
-              Body text for whatever you'd like to say. Add main takeaway
-              points, quotes, anecdotes, or even a very very short story.
-            </p>
-          </div>
+                <p className="text-gray-600 ">
+                  Body text for whatever you'd like to say. Add main takeaway
+                  points, quotes, anecdotes, or even a very very short story.
+                </p>
+              </div>
 
               {/* Vacancies in Run Section */}
               <div className="border p-4 rounded-lg shadow bg-white">
@@ -221,7 +221,7 @@ const Navbar = () => {
       </section>
 
           {/* Emergency Call Button */}
-          <section className="flex justify-end p-3">
+          <section className="flex justify-start p-3">
             <div className="flex">
               <img
                 src="/material-symbols_call-outline.png"

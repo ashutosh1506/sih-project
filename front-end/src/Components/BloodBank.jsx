@@ -28,16 +28,6 @@ const BloodBank = () => {
             className="absolute w-[170px] h-[8] top-[26px] left-[33px] opacity-100"
           />
 
-          {/* Main Menu and back arrow on the top-right corner */}
-          <div className="absolute top-[30px] right-[20px]  items-center space-x-4">
-            <button className="absolute right-0 top-full flex items-center text-black mt-2">
-              <span className="material-icons">
-                <Link to="/">
-                  <img src="/icon-park-solid_back.png" className="mr-[-6px]" />
-                </Link>
-              </span>
-            </button>
-          </div>
           {/* Heading - Blood Bank Information */}
           <h1
             className="absolute text-center border-[1px] border-solid  ml-[98px] -mt-[28px] text-[64px] font-normal  w-[230px] h-[38px] md:left-[50px] lg:left-[98px] lg:w-[1238px] lg:h-[68px] lg:top-[186px]  border-black bg-[rgba(138,191,188,0.21)] shadow-md shadow-[rgba(0,0,0,0.25)]"

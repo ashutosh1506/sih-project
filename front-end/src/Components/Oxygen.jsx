@@ -29,7 +29,7 @@ const Oxygen = () => {
           />
 
           {/* Main Menu and back arrow on the top-right corner */}
-          <div className="absolute top-[30px] right-[20px]  items-center space-x-4">
+          {/* <div className="absolute top-[30px] right-[20px]  items-center space-x-4">
             <button className="absolute right-0 top-full flex items-center text-black mt-2">
               <span className="material-icons">
                 <Link to="/">
@@ -37,7 +37,7 @@ const Oxygen = () => {
                 </Link>
               </span>
             </button>
-          </div>
+          </div> */}
           {/* Heading - Blood Bank Information */}
           <h1
             className="absolute text-center h-[74px]  whitespace-nowrap border-[1px] border-solid ml-[18px] -mt-[58px] text-[60px] font-normal px-4 py-2 md:left-[50px] lg:left-[98px] lg:w-auto lg:top-[186px] border-black bg-[rgba(138,191,188,0.21)] shadow-md shadow-[rgba(0,0,0,0.25)] "
@@ -52,48 +52,49 @@ const Oxygen = () => {
 
         {/* Background Image Section with Inputs */}
         <div
-          className="relative w-full h-[300px] bg-cover bg-center mt-[100px] bg-custom-oxygen rounded-[30px] overflow-hidden"
+          className="relative w-full h-[300px] bg-cover bg-center mt-[100px] bg-custom-oxygen"
           // Replace with actual background image path
         >
           {/* Form Section for Input */}
-          <div className="absolute mt-[50px] left-[45%] transform -translate-x-1/2 w-[80%] max-w-lg  -md p-6 rounded-lg md:w-[60%] lg:w-[50%]">
-            {/* Blood Group Input */}
-            <div className="mb-4 flex items-center whitespace-nowrap">
+          <div className="absolute top-[50px] left-1/2 transform -translate-x-1/2 w-[80%] max-w-lg p-6 rounded-lg md:w-[60%] lg:w-[50%]">
+            {/* Oxygen Cylinders Input */}
+            <div className="mb-4 flex items-center">
               <label
-                className="font-normal text-[20px] leading-[30.77px] text-left mr-[20px] text-white"
+                className="font-normal text-[20px] leading-[30.77px] text-left mr-4 text-white"
                 style={{ fontFamily: "Bruno Ace" }}
               >
-                NO.OF OXYGEN CYLINDERS REQUIRED :
+                NO. OF OXYGEN CYLINDERS REQUIRED:
               </label>
               <input
                 type="text"
                 className="flex-grow p-3 bg-white text-black rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                placeholder="Enter no. "
+                placeholder="Enter no."
                 value={bloodGroup}
                 onChange={(e) => setBloodGroup(e.target.value)}
               />
             </div>
 
-            {/* Units Required Input */}
-            <div className="mb-4 flex items-center whitespace-nowrap">
+            {/* Costing Input */}
+            <div className="mb-4 flex items-center">
               <label
-                className=" font-normal text-white text-[20px]  leading-[30.77px] mr-9"
+                className="font-normal text-[20px] leading-[30.77px] text-left mr-4 text-white"
                 style={{ fontFamily: "Bruno Ace" }}
               >
-                APPROXIMATE COSTING :
+                APPROXIMATE COSTING:
               </label>
               <input
                 type="number"
-                className="flex-grow p-3   bg-white text-black rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="flex-grow p-3 bg-white text-black rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 value={unitsRequired}
                 onChange={(e) => setUnitsRequired(e.target.value)}
               />
             </div>
+
             {/* Search Button */}
-            <div className="flex">
+            <div className="flex justify-center">
               <button
                 type="submit"
-                className="w-[130px] mt-[20px] ml-[180px] bg-white text-black py-3 rounded-md shadow-lg flex items-center justify-center gap-2 hover:bg-gray-300 transition duration-300 ease-in-out"
+                className="w-[130px] bg-white text-black py-3 rounded-md shadow-lg flex items-center justify-center gap-2 hover:bg-gray-300 transition duration-300 ease-in-out"
                 onClick={handleSearch}
               >
                 <img
