@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
-import { action as loginAction } from "./Components/Login.jsx";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
@@ -38,11 +37,7 @@ const route = createBrowserRouter(
     <>
       <Route path="/" element={<Navbar />}>
         <Route index element={<Home />} />
-        <Route
-          path="/login"
-          element={<Login />}
-          action={loginAction(queryClient)}
-        />
+        <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
       </Route>
       <Route path="/area" element={<Area />} />

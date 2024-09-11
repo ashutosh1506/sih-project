@@ -1,42 +1,22 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
-import { Link, Form, redirect, useNavigation } from "react-router-dom";
-import customFetch from "../utils/customFetch";
-// Server-side action function for login handling
-export const action =
-  (queryClient) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    try {
-      await customFetch.post("/users/login", data);
-      queryClient.invalidateQueries();
-      console.log(toast.success());
-
-      toast.success("Login Successful");
-      return redirect("/");
-    } catch (error) {
-      toast.error("An error occurred during login.");
-      return error;
-    }
-  };
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
-  const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
+  const [Phnnumber, setPhnnumber] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Basic validation logic that could be improved further
+  // Basic validation logic
   const validateForm = () => {
-    if (phone === "" || password === "") {
+    if (Phnnumber === "" || password === "") {
       setErrorMessage("Please fill out both fields.");
       return false;
     }
 
-    const passwordPattern =
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
     if (!passwordPattern.test(password)) {
       setErrorMessage(
         "Password must contain at least one letter, one number, and one special character."
@@ -47,85 +27,88 @@ const Login = () => {
     setErrorMessage("");
     return true;
   };
-  console.log("Login component rendered");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    try {
+      await axios.post("http://localhost:4000/api/v1/users/login", {
+        Phnnumber,
+        password,
+      });
+      toast.success("Login Successful");
+      navigate("/"); // Redirect to dashboard or another page
+    } catch (error) {
+      if (error.response) {
+        console.error("Error response data:", error.response.data);
+        console.error("Error response status:", error.response.status);
+        console.error("Error response headers:", error.response.headers);
+        toast.error(
+          `Login failed: ${error.response.data.message || "An error occurred."}`
+        );
+      } else if (error.request) {
+        console.error("Error request data:", error.request);
+        toast.error("No response from server.");
+      } else {
+        console.error("Error message:", error.message);
+        toast.error("An unexpected error occurred.");
+      }
+    }
+  };
+
   return (
-    <Form method="post" onSubmit={(e) => validateForm() || e.preventDefault()}>
-      <div>
-        {/* Navbar */}
-        <div className="text-white p-4 flex justify-end items-center space-x-4 font-Bruno Ace SC">
-          <div>
-            <img
-              id="icon"
-              src="icon-park-solid_back.png"
-              alt=""
-              className="w-8"
-            />
+    <div>
+      {/* Navbar */}
+
+      {/* Main Content */}
+      <div
+        className="flex justify-center items-center h-screen "
+        style={{ fontFamily: "Bruno Ace SC" }}
+      >
+        <div className="bg-white w-8/12 rounded-lg flex shadow-lg">
+          {/* Left Section */}
+          <div className="w-1/2 bg-cover bg-center p-8 items-center flex justify-center bg-custom-bg3">
+            <div className="bg-white w-60 rounded-3xl h-72 shadow-lg text-center">
+              <h2 className="text-lg font-semibold mt-20">NEW HERE?</h2>
+              <p className="mt-5 text-sm">
+                SIGN UP OR LOGIN TO GET RAPID RESPONSE RELATED TO YOUR HEALTH!
+              </p>
+            </div>
           </div>
 
-          {/* Hamburger Icon */}
-          <button
-            className="text-xl bg-transparent p-2"
-            style={{
-              width: "50px",
-              height: "50px",
-              color: "white",
-              border: "none",
-            }}
+          {/* Right Section */}
+          <div
+            className="w-1/2 bg-[linear-gradient(180deg,#ECDAF4_1.1%,#74F9F9_33.6%,_#343887_100%)] p-8 flex items-center justify-center"
+            style={{ fontFamily: "Bruno Ace SC" }}
           >
-            <span className="text-black text-5xl">≡</span>
-          </button>
-
-          <button className="bg-[#137D94] hover:bg-cyan-200 text-white rounded py-2 px-6 mt-6">
-            MAIN MENU
-          </button>
-        </div>
-
-        {/* Main Content */}
-        <div
-          className="flex justify-center items-center h-screen"
-          style={{ fontFamily: "Bruno Ace SC" }}
-        >
-          <div className="bg-white w-8/12 rounded-lg flex shadow-lg">
-            {/* Left Section */}
-            <div className="w-1/2 bg-cover bg-center p-8 items-center flex justify-center bg-custom-bg3">
-              <div className="bg-white w-60 rounded-3xl h-72 shadow-lg text-center">
-                <h2 className="text-lg font-semibold mt-20">NEW HERE?</h2>
-                <p className="mt-5 text-sm">
-                  SIGN UP OR LOGIN TO GET RAPID RESPONSE RELATED TO YOUR HEALTH!
-                </p>
+            <div className="bg-pink-50 p-8 rounded shadow-lg w-full max-w-sm">
+              <div>
+                <img
+                  id="usericon"
+                  src="material-symbols_person.png"
+                  alt=""
+                  className="w-12 mx-auto"
+                />
               </div>
-            </div>
+              <h2 className="text-xl font-serif text-center mb-1">Username</h2>
+              <div className="w-full h-[0.3px] bg-gray-400 my-4"></div>
 
-            {/* Right Section */}
-            <div
-              className="w-1/2 bg-[linear-gradient(180deg,#ECDAF4_1.1%,#74F9F9_33.6%,_#343887_100%)] p-8 flex items-center justify-center"
-              style={{ fontFamily: "Bruno Ace SC" }}
-            >
-              <div className="bg-pink-50 p-8 rounded shadow-lg w-full max-w-sm">
-                <div>
-                  <img
-                    id="usericon"
-                    src="material-symbols_person.png"
-                    alt=""
-                    className="w-12 mx-auto"
-                  />
-                </div>
-                <h2 className="text-xl font-serif text-center mb-1">
-                  Username
-                </h2>
-                <div className="w-full h-[0.3px] bg-gray-400 my-4"></div>
-
-                {/* Login Form */}
+              {/* Login Form */}
+              <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label htmlFor="phone" className="block text-sm font-serif">
+                  <label
+                    htmlFor="Phnnumber"
+                    className="block text-sm font-serif"
+                  >
                     Enter Phone No.:
                   </label>
                   <input
-                    type="text"
-                    name="phone"
+                    type="tel"
+                    id="Phnnumber"
                     placeholder="+91-XXXXXXXXXX"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={Phnnumber}
+                    onChange={(e) => setPhnnumber(e.target.value)}
                     className="w-full p-2 border rounded"
                   />
                 </div>
@@ -138,7 +121,7 @@ const Login = () => {
                   </label>
                   <input
                     type="password"
-                    name="password"
+                    id="password"
                     placeholder="****"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -150,7 +133,7 @@ const Login = () => {
                   </small>
                 </div>
 
-                {/* Error Message */}
+                {/*  Message */}
                 {errorMessage && (
                   <p className="text-red-600 text-center mb-4">
                     {errorMessage}
@@ -160,30 +143,25 @@ const Login = () => {
                 <button
                   type="submit"
                   className="w-1/2 ml-20 bg-cyan-400 text-white py-2 rounded-xl font-extrabold"
-                  disabled={isSubmitting}
                 >
-                  {isSubmitting ? "submitting" : "submit"}
+                  LOGIN
                 </button>
-
-                <p className="text-center mt-4">OR</p>
-                <p className="text-black text-center">FIRST TIME USER?</p>
-
-                <Link to="/Signin" className="w-1/2 ml-20">
-                  <button className="bg-blue-500 text-white py-2 rounded mt-3">
-                    SIGN IN
-                  </button>
-                </Link>
-              </div>
+              </form>
+              <p className="text-center mt-4">OR</p>
+              <p className="text-black text-center">FIRST TIME USER?</p>
+              <button className="w-1/2 ml-20 bg-blue-500 text-white py-2 rounded mt-3">
+                <Link to="/Signin">SIGN IN</Link>
+              </button>
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        <footer className="fixed bottom-0 w-full bg-gradient-to-r from-[#416E74] to-[#71D6E4] text-white py-6 text-center">
-          <p className="text-2xl">##RUNNING INFORMATION PANEL</p>
-        </footer>
       </div>
-    </Form>
+
+      {/* Footer */}
+      <footer className="fixed bottom-0 w-full bg-gradient-to-r from-[#416E74] to-[#71D6E4] text-white py-6 text-center">
+        <p className="text-2xl">##RUNNING INFORMATION PANEL</p>
+      </footer>
+    </div>
   );
 };
 
