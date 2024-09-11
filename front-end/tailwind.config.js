@@ -8,6 +8,7 @@ export default {
   ],
   theme: {
     extend: {
+
       backgroundImage: {
         'custom-bg': "url('/Rectangle 2.png')",  //  image path
         'custom-bg1' :"url('/image 3.png')",
@@ -19,10 +20,23 @@ export default {
       fontFamily: {
         kodchasan: ['Kodchasan', 'sans-serif'],
       },
+      textShadow: {
+        'black-outline': '1px 1px 0 rgba(0, 0, 0, 1)'
+      },
     },
   },
   plugins: [
     flowbite.plugin(),
+    function({ addUtilities }) {
+      addUtilities(
+        {
+          '.text-shadow': {
+            textShadow: '1px 1px 0 rgba(0, 0, 0, 1)',
+          }
+        },
+        ['responsive', 'hover']
+      )
+    }
   ],
 }
 

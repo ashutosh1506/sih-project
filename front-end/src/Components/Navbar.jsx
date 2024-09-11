@@ -2,11 +2,22 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import { useLocation } from "react-router-dom";
+//language
+import { useTranslation } from 'react-i18next';
+
 
 const Navbar = () => {
   const location = useLocation();
 
+  const { t, i18n } = useTranslation();
+  
   const isLoginPage = location.pathname === "/Login";
+
+  //language
+  const handleLanguageChange = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
+
 
   return (
     <>
@@ -16,7 +27,7 @@ const Navbar = () => {
           <div className="flex items-center w-[356px] h-[42px] mt-[19px] ml-[43px]  space-x-10 text-sm">
             <div className="flex items-center space-x-2">
               <Link to="/">
-                <span>Home</span>
+                <span>{t('home')}</span>
               </Link>
               <HomeIcon className="h-5 w-5 text-[rgba(37,124,108,0.86)]" />
             </div>
@@ -48,18 +59,20 @@ const Navbar = () => {
             </div>
             <div className="flex items-center space-x-2 cursor-pointer">
               <Link to="/bloodbank">
-                <span>BLOOD BANK</span>
+                <span>{t('bloodbank')}</span>
               </Link>
               <span className="text-xs">&#9660;</span>
             </div>
             <div className="flex items-center space-x-2 cursor-pointer">
-              <span>LANGUAGE</span>
-              <img
-                src="/Connect.png"
-                alt="*"
-                className="absolute w-[43px] h-[32px] left-[1450px] top-[22px]"
-              />{" "}
-              {/* language symbol */}
+              <span>{t('language')}</span>
+              <select
+                className="ml-2 p-1 border border-gray-300 rounded"
+                onChange={handleLanguageChange}
+                value={i18n.language}
+              >
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+              </select>
             </div>
           </div>
         </div>
