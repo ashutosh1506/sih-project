@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { HomeIcon } from "@heroicons/react/24/solid";
+import { Link } from 'react-router-dom';
+
 
 const BloodBank = () => {
   // State to hold user inputs
@@ -33,8 +34,9 @@ const BloodBank = () => {
         <span className="material-icons"><img src='/menu.png ' /></span> Main Menu
         </button>
         <button className="absolute right-0 top-full flex items-center text-black mt-2">
-        <span className="material-icons">
+        <span className="material-icons"><Link to='/'>
          <img src='/icon-park-solid_back.png' className='mr-[-6px]' />
+         </Link>
          </span>
         </button>
     </div>
@@ -101,8 +103,10 @@ const BloodBank = () => {
 
 
         </div>
-      </div>
-      
+      </div> 
+      {/*horizontal line*/}
+      <div className=" ml-[8%] w-[80%] h-[1px] mt-[20px] bg-black "></div>
+
     
     </div>
       {/* Bottom Section - Nearest Hospital Availability */}
