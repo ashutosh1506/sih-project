@@ -11,12 +11,12 @@ export const action =
     try {
       await customFetch.post("/users/login", data);
       queryClient.invalidateQueries();
+      console.log(toast.success());
+
       toast.success("Login Successful");
       return redirect("/");
     } catch (error) {
-      toast.error(
-        error?.response?.data?.msg || "An error occurred during login."
-      );
+      toast.error("An error occurred during login.");
       return error;
     }
   };
@@ -161,6 +161,7 @@ const Login = () => {
                   type="submit"
                   className="w-1/2 ml-20 bg-cyan-400 text-white py-2 rounded-xl font-extrabold"
                   disabled={isSubmitting}
+                  onClick={alert("Login Successful")}
                 >
                   {isSubmitting ? "submitting" : "submit"}
                 </button>
