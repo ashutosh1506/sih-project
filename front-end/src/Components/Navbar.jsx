@@ -129,7 +129,7 @@ const Navbar = () => {
 
 {!isLoginPage && (
         <>
-        <section className=" relative ml-[65px] mt-[550px] p-3">
+        <section className=" flex relative ml-[65px] mt-[550px] p-3">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Updates Section */}
           <div className="border p-4 rounded-lg shadow bg-white">
@@ -169,7 +169,8 @@ const Navbar = () => {
           </div>
 
           {/* Connect With Us Section */}
-          <div className="border p-4 rounded-lg shadow bg-white">
+          <div className="  border p-4 rounded-lg shadow bg-white">
+            
             <div className="text-lg font-bold flex items-center mb-2">
               <img src="/Info.jpg" alt="1" className="mr-3" />
               <span>CONNECT WITH US</span>
@@ -184,7 +185,12 @@ const Navbar = () => {
               INSTAGRAM
             </p>
           </div>
+            
+          
         </div>
+        <Link to='/chatbot'>
+        <img src="/health.png" className="fixed bottom-0 right-0 w-[100px]" alt="Health" />
+        </Link>
       </section>
 
       {/* Emergency Call Button */}
