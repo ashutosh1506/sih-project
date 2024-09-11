@@ -30,12 +30,6 @@ const Oxygen = () => {
 
           {/* Main Menu and back arrow on the top-right corner */}
           <div className="absolute top-[30px] right-[20px]  items-center space-x-4">
-            <button className="flex items-center text-black">
-              <span className="material-icons">
-                <img src="/menu.png " />
-              </span>{" "}
-              Main Menu
-            </button>
             <button className="absolute right-0 top-full flex items-center text-black mt-2">
               <span className="material-icons">
                 <Link to="/">
