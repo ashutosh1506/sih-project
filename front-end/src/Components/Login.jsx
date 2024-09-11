@@ -60,33 +60,6 @@ const Login = () => {
   return (
     <div>
       {/* Navbar */}
-      <div className="text-white p-4 flex justify-end items-center space-x-4 font-Bruno Ace SC">
-        <div>
-          <img
-            id="icon"
-            src="icon-park-solid_back.png"
-            alt=""
-            className="w-8"
-          />
-        </div>
-
-        {/* Hamburger Icon */}
-        <button
-          className="text-xl bg-transparent p-2"
-          style={{
-            width: "50px",
-            height: "50px",
-            color: "white",
-            border: "none",
-          }}
-        >
-          <span className="text-black text-5xl">≡</span>
-        </button>
-
-        <button className="bg-[#137D94] hover:bg-cyan-200 text-white rounded py-2 px-6 mt-6">
-          MAIN MENU
-        </button>
-      </div>
 
       {/* Main Content */}
       <div
