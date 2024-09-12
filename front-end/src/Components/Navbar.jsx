@@ -6,16 +6,14 @@ import { useLocation } from "react-router-dom";
 //language
 import { useTranslation } from "react-i18next";
 
-
 const Navbar = () => {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const isLoginPage = location.pathname === "/Login";
 
-  
   // Initialize language from localStorage or default to English
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') || 'en';
+    const savedLanguage = localStorage.getItem("language") || "en";
     i18n.changeLanguage(savedLanguage);
   }, [i18n]);
 
@@ -23,7 +21,7 @@ const Navbar = () => {
   const handleLanguageChange = () => {
     const newLang = i18n.language === "en" ? "hi" : "en";
     i18n.changeLanguage(newLang);
-    localStorage.setItem('language', newLang); // Save to localStorage
+    localStorage.setItem("language", newLang); // Save to localStorage
   };
   return (
     <>
@@ -40,7 +38,10 @@ const Navbar = () => {
               <HomeIcon className="h-5 w-5 text-[rgba(37,124,108,0.86)]" />
             </div>
             <Link to="/Login">
-              <span className="hover:text-black hover:opacity-40">  {t("login")}</span>
+              <span className="hover:text-black hover:opacity-40">
+                {" "}
+                {t("login")}
+              </span>
             </Link>
           </div>
 
@@ -61,14 +62,14 @@ const Navbar = () => {
             <div className="flex items-center space-x-2 cursor-pointer">
               <Link to="/hospital">
                 <span className="hover:text-black hover:opacity-40">
-                {t("hospitals")}
+                  {t("hospitals")}
                 </span>
               </Link>
             </div>
             <div className="flex items-center space-x-2 cursor-pointer">
               <Link to="/oxygen">
                 <span className="hover:text-black hover:opacity-40">
-                {t("oxygen")}
+                  {t("oxygen")}
                 </span>
               </Link>
             </div>
@@ -81,27 +82,25 @@ const Navbar = () => {
             </div>
             {/* Language Toggle */}
             <div className="flex items-center space-x-2 cursor-pointer">
-  <span>{t("language")}</span>
-  <div className="relative">
-    <button
-      onClick={handleLanguageChange}
-      className={`w-14 h-8 flex items-center rounded-full p-1 transition-all ${
-        i18n.language === "en" ? "bg-gray-500" : "bg-blue-800"
-      }`}
-    >
-      <div
-        className={`w-6 h-6 bg-white rounded-full shadow-md transform transition-transform ${
-          i18n.language === "en" ? "translate-x-0" : "translate-x-6"
-        }`}
-      ></div>
-      <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-white">
-        {i18n.language === "en" ? "हिन्दी" : "English"}
-      </span>
-    </button>
-  </div>
-</div>
-
-
+              <span>{t("language")}</span>
+              <div className="relative">
+                <button
+                  onClick={handleLanguageChange}
+                  className={`w-14 h-8 flex items-center rounded-full p-1 transition-all ${
+                    i18n.language === "en" ? "bg-gray-500" : "bg-blue-800"
+                  }`}
+                >
+                  <div
+                    className={`w-6 h-6 bg-white rounded-full shadow-md transform transition-transform ${
+                      i18n.language === "en" ? "translate-x-0" : "translate-x-6"
+                    }`}
+                  ></div>
+                  <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-white">
+                    {i18n.language === "en" ? "हिन्दी" : "English"}
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -131,9 +130,8 @@ const Navbar = () => {
 
             {/* Sub-Heading Section */}
             <h1 className="font-kodchasan text-[32px] mt-[15px] font-normal leading-[41.6px] text-white text-left">
-                Your Health, Our Mission...
-              </h1>
-
+              Your Health, Our Mission...
+            </h1>
 
             {/* Doctor and bed numbers */}
             <div className="flex w-screen h-screen">
@@ -146,11 +144,10 @@ const Navbar = () => {
                 <div className="w-[212px] h-[58px] ml-[150px] mt-[35px] text-center text-white font-kodchasan text-[24px] leading-[28.94px] font-[Bruno_Ace_SC] opacity-100">
                   100+ Doctors suggested
                 </div>
-              </div>
-
-           </div>
+                          
+              </div>
+            </div>
           </div>
-          
         </main>
       )}
 
@@ -195,30 +192,31 @@ const Navbar = () => {
                 </p>
               </div>
 
-          {/* Connect With Us Section */}
-          <div className="  border p-4 rounded-lg shadow bg-white">
-            
-            <div className="text-lg font-bold flex items-center mb-2">
-              <img src="/Info.jpg" alt="1" className="mr-3" />
-              <span>CONNECT WITH US</span>
+              {/* Connect With Us Section */}
+              <div className="  border p-4 rounded-lg shadow bg-white">
+                <div className="text-lg font-bold flex items-center mb-2">
+                  <img src="/Info.jpg" alt="1" className="mr-3" />
+                  <span>CONNECT WITH US</span>
+                </div>
+                <p className="text-gray-600">
+                  TWITTER
+                  <br />
+                  YOUTUBE
+                  <br />
+                  LINKEDIN
+                  <br />
+                  INSTAGRAM
+                </p>
+              </div>
             </div>
-            <p className="text-gray-600">
-              TWITTER
-              <br />
-              YOUTUBE
-              <br />
-              LINKEDIN
-              <br />
-              INSTAGRAM
-            </p>
-          </div>
-            
-          
-        </div>
-        <Link to='/chatbot'>
-        <img src="/chatbot_11939249.png" className="fixed bottom-0 right-0 w-[100px]" alt="Health" />
-        </Link>
-      </section>
+            <Link to="/Chatbot">
+              <img
+                src="/chatbot_11939249.png"
+                className="fixed bottom-0 right-0 w-[100px]"
+                alt="Health"
+              />
+            </Link>
+          </section>
 
           {/* Emergency Call Button */}
           <section className="flex justify-start p-3">
@@ -230,7 +228,7 @@ const Navbar = () => {
               />
               <a href="tel:911" className="flex">
                 <button className="bg-red-500 text-white px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-lg shadow hover:bg-red-600 transition-all">
-                {t("emergency_call")}
+                  {t("emergency_call")}
                 </button>
               </a>
             </div>
