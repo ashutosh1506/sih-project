@@ -44,7 +44,7 @@ const Signin = () => {
     try {
       await axios.post("http://localhost:4000/api/v1/users/signup", formData);
       toast.success("Signup Successful");
-      navigate("/login"); // Redirect to login page after successful signup
+      navigate("/"); // Redirect to login page after successful signup
     } catch (error) {
       if (error.response) {
         console.error("Error response data:", error.response.data);
